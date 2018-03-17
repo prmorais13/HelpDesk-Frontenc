@@ -3,6 +3,6 @@ export class User {
     public id: string,
     public email: string,
     public senha: string,
-    public profile: string
+    public profiles: string
   ) {}
 }
