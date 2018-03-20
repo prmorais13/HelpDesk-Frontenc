@@ -20,4 +20,8 @@ export class AppComponent implements OnInit {
       show => this.showTemplate = show
     );
   }
+
+  showContentWrapper() {
+    return this.shared.isLoggedIn();
+  }
 }

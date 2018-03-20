@@ -53,6 +53,4 @@ export class LoginComponent implements OnInit {
     window.location.href = '/login';
     window.location.reload();
   }
-
-  
 }
