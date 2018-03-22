@@ -14,7 +14,7 @@ import { UserService } from '../../../services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  usuario = new User('', '', '', '');
+  user = new User('', '', '', '');
   shared: SharedService;
   message: string;
 
@@ -30,11 +30,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.message = '';
-    this.userService.login(this.usuario)
+    this.userService.login(this.user)
       .subscribe((usuarioAutenticado: CurrentUser) => {
         this.shared.token = usuarioAutenticado.token;
         this.shared.user = usuarioAutenticado.user;
-        this.shared.user.profiles = usuarioAutenticado.user.profiles.substring(5);
+        this.shared.user.profiles = this.shared.user.profiles.substring(5);
         this.shared.showTemplate.emit(true);
         this.router.navigate(['/']);
       },
@@ -47,10 +47,22 @@ export class LoginComponent implements OnInit {
   }
 
   cancelLogin() {
-    this.usuario = new User('', '', '', '');
+    this.user = new User('', '', '', '');
     this.message = '';
     // this.router.navigate(['/login']);
     window.location.href = '/login';
     window.location.reload();
+  }
+
+  getFromGroupClass(isInvalid: boolean, isDirty): {} {
+    return {
+      'form-group': true,
+      'has-error': isInvalid && isDirty,
+      'has-success': !isInvalid && isDirty
+    };
+  }
+
+  teste() {
+    this.shared.teste();
   }
 }

@@ -1,8 +1,8 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter, OnInit } from '@angular/core';
 import { User } from '../model/user.model';
 
 @Injectable()
-export class SharedService {
+export class SharedService implements OnInit {
 
   public static instance: SharedService = null;
   user: User;
@@ -21,10 +21,17 @@ export class SharedService {
   }
 
   isLoggedIn(): boolean {
-    if (this.user === null) {
+    if (this.user == null) {
       return false;
     }
     // return true;
     return this.user.email !== '';
+  }
+
+  teste(): any {
+    return console.log(this.user);
+  }
+  ngOnInit() {
+    console.log(this.user);
   }
 }
